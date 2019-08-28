@@ -1,0 +1,62 @@
+
+
+/* Libraries */
+#include "lib/knot.h"
+
+
+/* Constants and Defines */
+//#define PORT "GPIO1"
+//#define PIN 10
+
+
+/* Log */
+LOG_MODULE_REGISTER(<%= props.name %>, LOG_LEVEL_DBG);
+
+
+/* Variables */
+//struct device *device;
+uint32_t var;
+
+
+/* Proxy to Thing */
+void read(struct knot_proxy *proxy)
+{
+	knot_proxy_value_set_basic(proxy, &var);
+	LOG_INF("Value changed to %d", var);
+}
+
+
+/* Thing to Proxy */
+void write(struct knot_proxy *proxy)
+{
+	knot_proxy_value_get_basic(proxy, &var);
+	LOG_INF("Value read %d", var);
+}
+
+
+void setup(void)
+{
+	/* Peripherals control */
+	//device = device_get_binding(PORT);
+	//gpio_pin_configure(device, PIN, GPIO_DIR_OUT);
+
+
+	/* KNoT Register */
+	knot_proxy_register(
+		0,
+		"NAME_SENSOR",
+		KNOT_TYPE_ID_SWITCH,
+		KNOT_VALUE_TYPE_INT,
+		KNOT_UNIT_NOT_APPLICABLE,
+		write,
+		read
+	);
+
+	/* KNoT Config */
+	knot_proxy_set_config(0, KNOT_EVT_FLAG_CHANGE, NULL);
+}
+
+void loop(void)
+{
+
+}
