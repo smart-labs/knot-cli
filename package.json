@@ -1,6 +1,6 @@
 {
     "name": "knot-cli",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "knot CLI",
     "private": true,
     "bin": {
@@ -23,6 +23,7 @@
     ],
     "license": "MIT",
     "dependencies": {
+        "ejs": "^2.6.2",
         "gluegun": "^2.1.0"
     },
     "devDependencies": {

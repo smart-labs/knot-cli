@@ -1,26 +1,26 @@
 module.exports = (toolbox) => {
 
-    const { template, print: { success, error } } = toolbox;
+    const { template, print: { success, error }, filename } = toolbox;
 
-    async function createApp(name) {
+    async function createApp(name, arguments) {
 
         if (!name) {
             error('App name must be specified');
             return;
         }
 
-        await createAppFiles(name);
-        await createConfigFiles(name);
+        await createAppFiles(name, arguments);
+        await createConfigFiles(name, arguments.q_total);
 
         success(`Created ${name} app`);
     }
 
-    async function createConfigFiles(name) {
+    async function createConfigFiles(name, q_total) {
 
         await template.generate({
             template: 'config/prj.config.ejs',
             target: `${name}/prj.config`,
-            props: { name: name }
+            props: { name: name, q_total: q_total }
 
         });
 
@@ -32,12 +32,12 @@ module.exports = (toolbox) => {
         });
     }
 
-    async function createAppFiles(name) {
+    async function createAppFiles(name, arguments) {
 
         await template.generate({
             template: 'program.c.ejs',
             target: `${name}/src/${name}.c`,
-            props: { name: name }
+            props: { name: name, q_digital: arguments.q_digital, q_total: arguments.q_total },
         });
 
         await template.generate({

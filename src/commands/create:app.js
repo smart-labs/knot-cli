@@ -1,14 +1,24 @@
 module.exports = {
     name: 'create:app',
-    description: 'Create new app',
+    alias: 'create',
+    description: 'Create a new app. [ --digital <value> | -d <value> ]',
     run: async toolbox => {
         const {
             parameters,
-            createApp
+            createApp,
+            validateParameters,
+            confirmeOverwrite
         } = toolbox
 
         const name = parameters.first;
+        const options = parameters.options;
 
-        await createApp(name);
+        if (await confirmeOverwrite(name) == false) return;
+
+        var arguments = await validateParameters(options);
+
+        if (arguments === false) return;
+
+        await createApp(name, arguments);
     }
 }

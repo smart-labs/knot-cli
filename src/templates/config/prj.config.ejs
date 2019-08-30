@@ -1,6 +1,6 @@
 # KNoT
 CONFIG_KNOT_NAME="<%= props.name %>"
-CONFIG_KNOT_THING_DATA_MAX=3
+CONFIG_KNOT_THING_DATA_MAX=<%= (props.q_total == 0)? 1 : props.q_total %>
 
 # Logging
 CONFIG_LOG=y
