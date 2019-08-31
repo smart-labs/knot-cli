@@ -1,0 +1,23 @@
+    <%_ if( props.q_total == 0){_%>
+    knot_proxy_register(
+        0,
+        "NAME_SENSOR",
+        KNOT_TYPE_ID_SWITCH,
+        KNOT_VALUE_TYPE_INT,
+        KNOT_UNIT_NOT_APPLICABLE,
+        write,
+        read
+    );
+    <%_ } _%>
+    <%_ for(var count = 0; count < props.q_digital; count++){_%>
+    knot_proxy_register(
+        <%=count%>,
+        "SENSOR_<%=count%>",
+        KNOT_TYPE_ID_SWITCH,
+        KNOT_VALUE_TYPE_INT,
+        KNOT_UNIT_NOT_APPLICABLE,
+        write_<%=count%>,
+        read_<%=count%>
+    );
+
+    <%_ } _%>

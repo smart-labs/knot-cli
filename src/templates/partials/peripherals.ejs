@@ -1,0 +1,9 @@
+    <%_ if(props.q_total == 0){ _%>
+    //device = device_get_binding(PORT);
+    //gpio_pin_configure(device, PIN, GPIO_DIR_OUT);
+    <%_ } _%>
+    <%_for(var count = 0; count < props.q_digital; count++){ _%>
+    device_<%= count %> = device_get_binding(PORT_<%= count %>);
+    gpio_pin_configure(device_<%= count %>, PIN_<%= count %>, GPIO_DIR_OUT);
+
+    <%_ } _%>

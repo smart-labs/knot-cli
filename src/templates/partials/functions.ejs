@@ -1,0 +1,32 @@
+<%_ if(props.q_total == 0){ _%>
+/* Proxy to Thing */ 
+void read(struct knot_proxy *proxy)
+{
+	knot_proxy_value_set_basic(proxy, &var);
+	LOG_INF("Value changed to %d", var);
+}
+
+/* Thing to Proxy */
+void write(struct knot_proxy *proxy)
+{
+	knot_proxy_value_get_basic(proxy, &var);
+	LOG_INF("Value read %d", var);
+}
+<%_ } _%>
+<%_ for(var count = 0; count < props.q_digital; count++){ _%>
+/* Proxy to Thing */ 
+void read_<%= count %>(struct knot_proxy *proxy)
+{
+	knot_proxy_value_set_basic(proxy, &var_<%= count %>);
+	LOG_INF("Value changed to %d", var_<%= count %>);
+}
+
+/* Thing to Proxy */
+void write_<%= count %>(struct knot_proxy *proxy)
+{
+	knot_proxy_value_get_basic(proxy, &var_<%= count %>);
+	LOG_INF("Value read %d", var_<%= count %>);
+}
+
+
+<%_ } _%>

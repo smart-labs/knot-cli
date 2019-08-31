@@ -1,0 +1,6 @@
+    <%_ if( props.q_total == 0){_%>
+    knot_proxy_set_config(0, KNOT_EVT_FLAG_CHANGE, NULL);
+    <%_ } _%>
+    <%_ for(var count = 0; count < props.q_digital; count++){_%>
+    knot_proxy_set_config(<%=count%>, KNOT_EVT_FLAG_CHANGE, NULL);
+    <%_ } _%>

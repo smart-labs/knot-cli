@@ -7,18 +7,9 @@
 /* Libraries */
 #include "lib/knot.h"
 
-<%_ const pins = [10,13,15,0,10,9,24,22,20,17,15,13,31,29,2] _%>
 
 /* Constants and Defines */ 
-<%_ if(props.q_total == 0){ _%>
-//#define PORT_0 = "GPIO_1"
-//#define PIN_0 = 10
-<%_ } _%>
-<%_ for (var count = 0; count < props.q_digital; count++){ _%>
-#define PORT_<%= count %> "GPIO_<%= (count < 4)? 1 : 0%>"
-#define PIN_<%= count %> <%= pins[count] %>;
-
-<%_ } _%>
+<%- include partials/const-def.ejs %>
 
 
 /* Log */
@@ -26,96 +17,22 @@ LOG_MODULE_REGISTER(<%= props.name %>, LOG_LEVEL_DBG);
 
 
 /* Variables */ 
-<%_ if(props.q_total == 0){ _%>
-//struct device *device;
-uint32_t var;
-<%_ } _%>
-<%_ for(var count = 0; count < props.q_digital; count++){ _%>
-struct device *device_<%= count %>;
-uint32_t var_<%= count %>;
-
-<%_ } _%>
-
-<%_ if(props.q_total == 0){ _%>
-/* Proxy to Thing */ 
-void read(struct knot_proxy *proxy)
-{
-	knot_proxy_value_set_basic(proxy, &var);
-	LOG_INF("Value changed to %d", var);
-}
-
-/* Thing to Proxy */
-void write(struct knot_proxy *proxy)
-{
-	knot_proxy_value_get_basic(proxy, &var);
-	LOG_INF("Value read %d", var);
-}
-<%_ } _%>
-<%_ for(var count = 0; count < props.q_digital; count++){ _%>
-/* Proxy to Thing */ 
-void read_<%= count %>(struct knot_proxy *proxy)
-{
-	knot_proxy_value_set_basic(proxy, &var_<%= count %>);
-	LOG_INF("Value changed to %d", var_<%= count %>);
-}
-
-/* Thing to Proxy */
-void write_<%= count %>(struct knot_proxy *proxy)
-{
-	knot_proxy_value_get_basic(proxy, &var_<%= count %>);
-	LOG_INF("Value read %d", var_<%= count %>);
-}
+<%- include partials/variables %>
 
 
-<%_ } _%>
-
+<%- include partials/functions %>
 
 
 void setup(void)
 {
 	/* Peripherals control */
-	<%_ if(props.q_total == 0){ _%>
-	//device = device_get_binding(PORT);
-	//gpio_pin_configure(device, PIN, GPIO_DIR_OUT);
-	<%_ } _%>
-	<%_for(var count = 0; count < props.q_digital; count++){ _%>
-	device_<%= count %> = device_get_binding(PORT_<%= count %>);
-	gpio_pin_configure(device_<%= count %>, PIN_<%= count %>, GPIO_DIR_OUT);
-
-	<%_ } _%>
+<%- include partials/peripherals %>
 
 	/* KNoT Register */
-	<%_ if( props.q_total == 0){_%>
-	knot_proxy_register(
-		0,
-		"NAME_SENSOR",
-		KNOT_TYPE_ID_SWITCH,
-		KNOT_VALUE_TYPE_INT,
-		KNOT_UNIT_NOT_APPLICABLE,
-		write,
-		read
-	);
-	<%_ } _%>
-	<%_ for(var count = 0; count < props.q_digital; count++){_%>
-	knot_proxy_register(
-		<%=count%>,
-		"SENSOR_<%=count%>",
-		KNOT_TYPE_ID_SWITCH,
-		KNOT_VALUE_TYPE_INT,
-		KNOT_UNIT_NOT_APPLICABLE,
-		write_<%=count%>,
-		read_<%=count%>
-	);
-
-	<%_ } _%>
+<%- include partials/knot-register %>
 
 	/* KNoT Config */
-	<%_ if( props.q_total == 0){_%>
-	knot_proxy_set_config(0, KNOT_EVT_FLAG_CHANGE, NULL);
-	<%_ } _%>
-	<%_ for(var count = 0; count < props.q_digital; count++){_%>
-	knot_proxy_set_config(<%=count%>, KNOT_EVT_FLAG_CHANGE, NULL);
-	<%_ } _%>
+<%- include partials/knot-config %>
 
 }
 

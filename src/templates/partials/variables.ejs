@@ -1,0 +1,9 @@
+<%_ if(props.q_total == 0){ _%>
+//struct device *device;
+uint32_t var;
+<%_ } _%>
+<%_ for(var count = 0; count < props.q_digital; count++){ _%>
+struct device *device_<%= count %>;
+uint32_t var_<%= count %>;
+
+<%_ } _%>
