@@ -1,8 +1,7 @@
 {
     "name": "knot-cli",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "knot CLI",
-    "private": true,
     "bin": {
         "knot-cli": "bin/knot"
     },
@@ -23,8 +22,7 @@
     ],
     "license": "MIT",
     "dependencies": {
-        "ejs": "^2.6.2",
-        "gluegun": "^2.1.0"
+        "gluegun": "^3.3.4"
     },
     "devDependencies": {
         "standard": "^12.0.1",
