@@ -27,5 +27,5 @@ module.exports = (toolbox) => {
         return { q_total: total, q_digital: digital };
     }
 
-    toolbox.validateParameters = validateParameters;
+    toolbox.validateParametersApp = validateParameters;
 }

@@ -6,16 +6,16 @@ module.exports = {
         const {
             parameters,
             createApp,
-            validateParameters,
-            confirmeOverwrite
+            validateParametersApp,
+            confirmOverwrite
         } = toolbox
 
         const name = parameters.first;
         const options = parameters.options;
 
-        if (await confirmeOverwrite(name) == false) return;
+        if (await confirmOverwrite(name) == false) return;
 
-        var arguments = await validateParameters(options);
+        var arguments = await validateParametersApp(options);
 
         if (arguments === false) return;
 

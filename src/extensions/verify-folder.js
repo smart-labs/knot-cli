@@ -2,7 +2,7 @@ module.exports = (toolbox) => {
 
     const { filesystem, prompt } = toolbox;
 
-    async function confirmeOverwrite(name) {
+    async function confirmOverwrite(name) {
 
         var folder = filesystem.exists(`${name}`);
         if (folder == 'dir') {
@@ -13,5 +13,5 @@ module.exports = (toolbox) => {
         return true;
     }
 
-    toolbox.confirmeOverwrite = confirmeOverwrite;
+    toolbox.confirmOverwrite = confirmOverwrite;
 }
