@@ -14,6 +14,9 @@ module.exports = (toolbox) => {
         } else if (argument == 'thing' || argument == 't') {
             opn('https://knot-devel.cesar.org.br/doc/thing/thing.html');
 
+        } else if (argument == 'start' || argument == 's') {
+            opn('https://knot-devel.cesar.org.br/doc/quick-start/qs-guide.html');
+
         } else {
             opn('https://knot-devel.cesar.org.br/doc/general/introduction.html');
 
