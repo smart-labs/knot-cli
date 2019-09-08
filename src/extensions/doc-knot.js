@@ -26,4 +26,5 @@ module.exports = (toolbox) => {
     }
 
     toolbox.openDocKnot = openDocKnot;
+
 }

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'doc:zephyr',
     alias: 'docz',
-    description: 'Zephyr documentation',
+    description: 'Zephyr Documentation',
     run: async toolbox => {
 
         const {

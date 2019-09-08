@@ -20,4 +20,5 @@ module.exports = (toolbox) => {
     }
 
     toolbox.openDocZephyr = openDocZephyr;
+
 }
