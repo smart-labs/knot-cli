@@ -5,6 +5,6 @@
 <%_ } _%>
 <%_ for (var count = 0; count < props.q_digital; count++){ _%>
 #define PORT_<%= count %> "GPIO_<%= (count < 4)? 1 : 0%>"
-#define PIN_<%= count %> <%= pins[count] %>;
+#define PIN_<%= count %> <%= pins[count] %>
 
 <%_ } _%>

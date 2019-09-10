@@ -18,15 +18,22 @@ module.exports = (toolbox) => {
     async function createConfigFiles(name, q_total) {
 
         await template.generate({
-            template: 'config/prj.config.ejs',
-            target: `${name}/prj.config`,
+            template: 'config/prj.conf.ejs',
+            target: `${name}/prj.conf`,
             props: { name: name, q_total: q_total }
 
         });
 
         await template.generate({
-            template: 'config/setup.config.ejs',
-            target: `${name}/setup.config`,
+            template: 'config/setup.conf.ejs',
+            target: `${name}/setup.conf`,
+            props: { name: name }
+
+        });
+
+        await template.generate({
+            template: 'config/CMakeLists.txt.ejs',
+            target: `${name}/CMakeLists.txt`,
             props: { name: name }
 
         });
@@ -41,8 +48,8 @@ module.exports = (toolbox) => {
         });
 
         await template.generate({
-            template: 'lib/knot.h',
-            target: `${name}/lib/knot.h`
+            template: 'lib/utility.h',
+            target: `${name}/lib/utility.h`
         });
     }
 

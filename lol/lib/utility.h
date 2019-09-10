@@ -1,5 +1,5 @@
-#ifndef KNOT_H_
-#define KNOT_H_
+#ifndef UTILITY_H_
+#define UTILITY_H_
 
 #include <zephyr.h>
 #include <net/net_core.h>
