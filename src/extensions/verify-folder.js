@@ -6,11 +6,11 @@ module.exports = (toolbox) => {
 
         var folder = filesystem.exists(`${name}`);
         if (folder == 'dir') {
-            if (!await prompt.confirm('A directory with this name already exists! Do you really want to overwrite?'))
-                return false;
+
+            return await prompt.confirm('A directory with this name already exists! Do you really want to overwrite?');
         }
 
-        return true;
+        return null;
     }
 
     toolbox.confirmOverwrite = confirmOverwrite;

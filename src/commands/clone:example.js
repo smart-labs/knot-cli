@@ -1,11 +1,11 @@
 module.exports = {
-    name: 'doc:zephyr',
-    alias: 'docz',
-    description: 'Zephyr Documentation',
+    name: 'clone:example',
+    alias: 'clone',
+    description: 'Clone sensors example.',
     run: async toolbox => {
 
         const {
-            openDocZephyr,
+            cloneExample,
             parameters,
             validateParametersFirst
         } = toolbox;
@@ -13,6 +13,6 @@ module.exports = {
 
         var argument = await validateParametersFirst(options);
 
-        await openDocZephyr(argument);
+        await cloneExample(argument);
     }
 }

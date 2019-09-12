@@ -7,11 +7,11 @@ module.exports = {
         const {
             openDocKnot,
             parameters,
-            validateParametersDoc
+            validateParametersFirst
         } = toolbox;
         const options = parameters.options;
 
-        var argument = await validateParametersDoc(options);
+        var argument = await validateParametersFirst(options);
 
         await openDocKnot(argument);
     }
