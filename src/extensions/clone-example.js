@@ -51,7 +51,7 @@ module.exports = (toolbox) => {
 
         if (await confirmOverwrite(projectName) == false) return;
 
-        exec(`svn checkout https://github.com/CESARBR/zephyr-knot-sdk/trunk/apps/${projectName}`, (err, stdout, stderr) => {
+        exec(`svn co https://github.com/CESARBR/zephyr-knot-sdk/tags/KNOT-v02.01-rc01/apps/${projectName}`, (err, stdout, stderr) => {
             if (err)
                 error(stderr);
             else
