@@ -19,8 +19,8 @@ module.exports = (toolbox) => {
 
         total = digital;
 
-        if (total > 15) {
-            error("Sensor limit exceeded! Maximum number allowed is 15");
+        if (total > 12) {
+            error("Sensor limit exceeded! Maximum number allowed is 12");
             return false;
         }
 

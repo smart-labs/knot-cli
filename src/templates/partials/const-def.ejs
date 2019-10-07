@@ -1,10 +1,12 @@
-<%_ const pins = [10,13,15,0,10,9,24,22,20,17,15,13,31,29,2] _%>
+<%_ const pins = [10,13,15,0,10,9,24,22,20,17,15,13] _%>
 <%_ if(props.q_total == 0){ _%>
-//#define PORT_0 = "GPIO_1"
-//#define PIN_0 = 10
+//#define PORT_0 = "GPIO_1" //#define PIN_0 = 10
 <%_ } _%>
 <%_ for (var count = 0; count < props.q_digital; count++){ _%>
-#define PORT_<%= count %> "GPIO_<%= (count < 4)? 1 : 0%>"
-#define PIN_<%= count %> <%= pins[count] %>
+#define PORT_
+<%= count %> "GPIO_
+<%= (count < 4)? 1 : 0%>" #define PIN_
+<%= count %>
+<%= pins[count] %>
 
 <%_ } _%>
