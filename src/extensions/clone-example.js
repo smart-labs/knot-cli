@@ -5,15 +5,14 @@ module.exports = (toolbox) => {
     const commands = {
         'digitalCounter': 'digital-counter',
         'analogAlert': 'analog-alert',
-        'helloDongle': 'hello-dongle',
         'multisensor': 'multisensor',
         'dc': 'digital-counter',
         'al': 'analog-alert',
-        'hd': 'hello-dongle',
         'ms': 'multisensor',
+        'blink': 'blink',
+        'button': 'button',
         'thermo': 'thermo',
         'toggle': 'toggle',
-        'hello': 'hello',
         'plate': 'plate',
         'tank': 'tank'
     };
@@ -35,10 +34,10 @@ module.exports = (toolbox) => {
             [
                 ['Projects', 'function'],
                 ['analog alert', '--al, --analogAlert'],
+                ['blink', '--blink'],
+                ['button', '--button'],
                 ['digital counter', '--dc, --digitalCounter'],
-                ['hello dongle', '--hd, --helloDongle'],
                 ['multisensor', '--ms, --multisensor'],
-                ['hello', '--hello'],
                 ['plate', '--plate'],
                 ['tank', '--tank'],
                 ['thermo', '--thermo'],
@@ -51,7 +50,7 @@ module.exports = (toolbox) => {
 
         if (await confirmOverwrite(projectName) == false) return;
 
-        exec(`svn co https://github.com/CESARBR/zephyr-knot-sdk/tags/KNOT-v02.01-rc01/apps/${projectName}`, (err, stdout, stderr) => {
+        exec(`svn co https://github.com/CESARBR/zephyr-knot-sdk/trunk/apps/${projectName}`, (err, stdout, stderr) => {
             if (err)
                 error(stderr);
             else

@@ -64,10 +64,10 @@ Supports the commands shown below
   | Projects        | function               |
   | --------------- | ---------------------- |
   | analog alert    | --al, --analogAlert    |
+  | blink           | --blink                |
+  | button          | --button               |
   | digital counter | --dc, --digitalCounter |
-  | hello dongle    | --hd, --helloDongle    |
   | multisensor     | --ms, --multisensor    |
-  | hello           | --hello                |
   | plate           | --plate                |
   | tank            | --tank                 |
   | thermo          | --thermo               |
