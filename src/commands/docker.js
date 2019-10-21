@@ -9,7 +9,7 @@ module.exports = {
         exec('pwd', (err, res) => {
             if (!err) {
                 success('open docker cesarbr/knot-zephyr-sdk:latest ~' + res);
-                spawnSync('docker', ['run', '-ti', '--privileged', '-v', '/dev:/dev', '-v', `${res.trim()}/:/workdir`, 'cesarbr/knot-zephyr-sdk:latest'], { stdio: 'inherit' });
+                spawnSync('sudo', ['docker','run', '-ti', '--privileged', '-v', '/dev:/dev', '-v', `${res.trim()}/:/workdir`, 'cesarbr/knot-zephyr-sdk:latest'], { stdio: 'inherit' });
             } else {
                 error('there was an error opening the docker: \n' + err);
             }

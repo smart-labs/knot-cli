@@ -1,4 +1,5 @@
 const { build } = require('gluegun')
+require('dotenv').config()
 
 /**
  * Create the cli and kick it off
