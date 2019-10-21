@@ -1,7 +1,7 @@
 module.exports = {
     name: 'doc:knot',
     alias: 'dock',
-    description: 'KNoT Documentation',
+    description: 'KNoT Documentation. [ --cloud, --gateway, --thing or --start ]',
     run: async toolbox => {
 
         const {

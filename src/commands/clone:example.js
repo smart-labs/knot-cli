@@ -1,7 +1,7 @@
 module.exports = {
     name: 'clone:example',
     alias: 'clone',
-    description: 'Clone sensors example.',
+    description: 'Clone sensors example. [ --<function> ]',
     run: async toolbox => {
 
         const {

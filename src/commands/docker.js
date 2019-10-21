@@ -1,6 +1,6 @@
 module.exports = {
     name: 'docker',
-    description: 'open docker cesarbr/knot-zephyr-sdk:latest',
+    description: 'Open docker cesarbr/knot-zephyr-sdk:latest',
     run: async toolbox => {
 
         const { exec, spawnSync } = require('child_process');
