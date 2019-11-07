@@ -1,7 +1,7 @@
 module.exports = {
     name: 'create:app',
     alias: 'create',
-    description: 'Create a new app. [ --digital <value> or -d <value> ]',
+    description: 'Create a new app by passing the project name. [ --digital <value> or -d <value> ]',
     run: async toolbox => {
         const {
             parameters,
